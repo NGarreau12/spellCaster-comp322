@@ -24,18 +24,10 @@ class TestScene extends Phaser.Scene
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.roundPixels = true;
 
-    /*this.joystick = new VirtualJoystick({
-      mouseSupport: true,
-		  stationaryBase: true,
-      baseX: 150,
-      baseY: 200,
-		  limitStickTravel: true,
-		  stickRadius: 50
-    });*/
-
-    /*setTimeout(() => {
-      this.scene.switch("testBattle");
-    }, 2000);*/
+    setTimeout(() => {
+      //this.scene.switch("testBattle");
+      this.scene.run("mobileOverWorldUI");
+    }, 2000);
   }
 
   update()

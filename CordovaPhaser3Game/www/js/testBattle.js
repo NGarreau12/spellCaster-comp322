@@ -28,15 +28,15 @@ class TestBattle extends Phaser.Scene
     this.enemyCooler = 2;
     this.enemyAttackCount = 0;
 
-    this.txt = this.add.text(550, 150, this.enemyAttackCount, { fontFamily: "Arial", fontSize: 100, color: "#000000" });
+    setTimeout(() => {
+      this.txt = this.add.text(550, 150, this.enemyAttackCount, { fontFamily: "Arial", fontSize: 100, color: "#000000" });
+      this.scene.switch("testScene");
+    }, 2000);
   }
 
   update()
   {
-    /*if (map["y"] == 1)
-    {
-      this.scene.switch("testScene");
-    }*/
+
   }
 
   enemyAttack()

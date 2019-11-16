@@ -1,16 +1,19 @@
-document.addEventListener('deviceready', function() {
-  screen.orientation.lock('landscape');
-})
+// start the app with deviceready event
+function onLoad() {
 
-window.addEventListener('load', () => {
-  window.setTimeout(() => {
-    buildConfig();
-  }, 200)
-})
+	// check deviceready event - wait for app to load...
+	document.addEventListener('deviceready', function() {
 
-function buildConfig()
-{
-  this.gameSettings = {
+		start();
+
+	});
+
+}
+
+function buildConfig(type) {
+	console.log(`screen background set for orientation - ${type}`);
+
+	this.gameSettings = {
     playerSpeed: 200
   }
 
@@ -18,14 +21,14 @@ function buildConfig()
     type: Phaser.AUTO,
     width: window.innerWidth,// * window.devicePixelRatio,
     height: window.innerHeight,// * window.devicePixelRatio,
-    backgroundColor: 0x000000,
+    backgroundColor: 000000,
     pixelArt: true,
-    autoResize: false,
+    autoResize: true,
     scale: {
         mode: Phaser.Scale.RESIZE,
-        autoCenter: Phaser.Scale.CENTER_BOTH
+        autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    scene: [LoadAssets, TestScene, TestBattle],
+    scene: [LoadAssets, TestScene, TestBattle, MobileOverWorldUI],
     physics: {
       default: "arcade",
       arcade: {
@@ -33,6 +36,18 @@ function buildConfig()
       }
     }
   };
-
   this.game = new Phaser.Game(this.config);
 }
+
+function ready() {
+  const { type } = screen.orientation;
+  console.log(`screen orientation = ${type}`);
+	buildConfig(type);
+}
+
+async function start() {
+  await screen.orientation.lock("landscape");
+  ready();
+}
+
+onLoad();

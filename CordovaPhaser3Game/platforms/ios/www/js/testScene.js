@@ -33,9 +33,10 @@ class TestScene extends Phaser.Scene
 		  stickRadius: 50
     });*/
 
-    /*setTimeout(() => {
-      this.scene.switch("testBattle");
-    }, 2000);*/
+    setTimeout(() => {
+      //this.scene.switch("testBattle");
+      this.scene.run("mobileOverWorldUI");
+    }, 2000);
   }
 
   update()
