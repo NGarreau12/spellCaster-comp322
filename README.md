@@ -1,4 +1,4 @@
-# Spell Caster
+# Spell Caster (Still in Early Development)
 
 Mobile app RPG with the core mechanic being that enemies do not stop attacking and the player performs attacks by inputting specific button combinations, or casting spells. Created using JavaScript and HTML in Apache Cordova and Phaser 3.
 
