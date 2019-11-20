@@ -10,6 +10,13 @@ class LoadAssets extends Phaser.Scene
     this.load.image("tiles", "img/TileMaps/comp322TilesTest.png");
     this.load.tilemapTiledJSON("map", "img/TileMaps/comp322TileMapTest.json");
 
+    this.load.image("a-pressed", "img/gamepad/A_Button_Pressed.png");
+    this.load.image("a-unpressed", "img/gamepad/A_Button_Unpressed.png");
+    this.load.image("b-pressed", "img/gamepad/B_Button_Pressed.png");
+    this.load.image("b-unpressed", "img/gamepad/B_Button_Unpressed.png");
+    this.load.image("arrow-pressed", "img/gamepad/Arrow_Pressed.png");
+    this.load.image("arrow-unpressed", "img/gamepad/Arrow_Unpressed.png");
+
     this.load.spritesheet("player", "img/SpriteSheets/comp322PlayerTest.png", {
       frameWidth: 32,
       frameHeight: 48

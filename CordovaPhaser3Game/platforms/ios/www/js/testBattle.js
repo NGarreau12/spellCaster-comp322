@@ -21,7 +21,7 @@ class TestBattle extends Phaser.Scene
 
     var camera = this.cameras.main;
     camera.startFollow(this.player);
-    camera.setBounds(0, 0, 600, 600);
+    camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.roundPixels = true;
 
     this.enemyCoolDown = false;

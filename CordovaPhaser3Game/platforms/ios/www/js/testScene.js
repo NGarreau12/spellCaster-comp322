@@ -24,19 +24,15 @@ class TestScene extends Phaser.Scene
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.roundPixels = true;
 
-    /*this.joystick = new VirtualJoystick({
-      mouseSupport: true,
-		  stationaryBase: true,
-      baseX: 150,
-      baseY: 200,
-		  limitStickTravel: true,
-		  stickRadius: 50
-    });*/
-
     setTimeout(() => {
       //this.scene.switch("testBattle");
       this.scene.run("mobileOverWorldUI");
     }, 2000);
+  }
+
+  getPlayer()
+  {
+    return this.player;
   }
 
   update()
@@ -65,19 +61,19 @@ class TestScene extends Phaser.Scene
       this.player.setVelocityY(0);
     }*/
 
-    /*if (this.player.velocity.x > 0)
+    /*if (this.player.body.velocity.x > 0)
     {
       this.player.play("right", true);
     }
-    else if (this.player.velocity.x < 0)
+    else if (this.player.body.velocity.x < 0)
     {
       this.player.play("left", true);
     }
-    else if (this.player.velocity.y > 0)
+    else if (this.player.body.velocity.y > 0)
     {
       this.player.play("down", true);
     }
-    else if (this.player.velocity.y < 0)
+    else if (this.player.body.velocity.y < 0)
     {
       this.player.play("up", true);
     }

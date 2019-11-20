@@ -1,0 +1,12 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Spell Caster",
+  "short_name": "Spell Caster",
+  "version": "spellCaster",
+  "description": "A top-down RPG that is built off of a spell casting system.",
+  "author": "Garreau Games",
+  "icons": [],
+  "start_url": "index.html",
+  "theme_color": "#000000"
+}
