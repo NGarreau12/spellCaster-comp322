@@ -58,6 +58,6 @@ class LoadAssets extends Phaser.Scene
         repeat: -1
     });
 
-    this.scene.start("testGame");
+    this.scene.start("testScene");
   }
 }

@@ -2,10 +2,10 @@ class TestScene extends Phaser.Scene
 {
   constructor()
   {
-    super("testGame");
+    super("testScene");
   }
 
-  create()
+  create() //When later abstracted: createArea(mapArea, tileSet, enterFrom)
   {
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("comp322TileSetTest", "tiles");
@@ -24,61 +24,31 @@ class TestScene extends Phaser.Scene
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.roundPixels = true;
 
-    setTimeout(() => {
-      //this.scene.switch("testBattle");
-      this.scene.run("mobileOverWorldUI");
-    }, 2000);
+    this.openUI();
+    this.events.on('wake', this.openUI, this);
   }
 
-  getPlayer()
+  openUI()
   {
-    return this.player;
+    this.scene.run("mobileOverWorldUI");
+    var overUI = this.scene.get("mobileOverWorldUI");
+    overUI.createUI(this, this.player);
+    this.scene.stop("testBattle");
+  }
+
+  enterBattle()
+  {
+    this.scene.sleep("mobileOverWorldUI");
+    this.scene.switch("testBattle");
+  }
+
+  enterOVW()
+  {
+
   }
 
   update()
   {
-    /*if (this.joystick.left)
-    {
-      this.player.setVelocityX(-gameSettings.playerSpeed);
-    }
-    else if (this.joystick.right)
-    {
-      this.player.setVelocityX(gameSettings.playerSpeed);
-    }
-    else {
-      this.player.setVelocityX(0);
-    }
 
-    if (this.joystick.up)
-    {
-      this.player.setVelocityY(-gameSettings.playerSpeed);
-    }
-    else if (this.joystick.down)
-    {
-      this.player.setVelocityY(gameSettings.playerSpeed);
-    }
-    else {
-      this.player.setVelocityY(0);
-    }*/
-
-    /*if (this.player.body.velocity.x > 0)
-    {
-      this.player.play("right", true);
-    }
-    else if (this.player.body.velocity.x < 0)
-    {
-      this.player.play("left", true);
-    }
-    else if (this.player.body.velocity.y > 0)
-    {
-      this.player.play("down", true);
-    }
-    else if (this.player.body.velocity.y < 0)
-    {
-      this.player.play("up", true);
-    }
-    else {
-      this.player.play("still", true);
-    }*/
   }
 }

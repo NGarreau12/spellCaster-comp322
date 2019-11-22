@@ -17,7 +17,7 @@ class TestBattle extends Phaser.Scene
     var spawnPoint = map.findObject("Objects", obj => obj.name === "Spawn Point");
 
     this.player = this.physics.add.sprite(500, 100, "player");
-    //this.physics.add.collider(this.player, worldLayer);
+    this.physics.add.collider(this.player, worldLayer);
 
     var camera = this.cameras.main;
     camera.startFollow(this.player);
@@ -28,10 +28,38 @@ class TestBattle extends Phaser.Scene
     this.enemyCooler = 2;
     this.enemyAttackCount = 0;
 
-    setTimeout(() => {
+    this.openUI();
+
+    /*setTimeout(() => {
+      var sceneStat = "false";
+      if (this.scene.isSleeping("testScene")) { sceneStat = "true"; console.log("true"); }
       this.txt = this.add.text(550, 150, this.enemyAttackCount, { fontFamily: "Arial", fontSize: 100, color: "#000000" });
+      this.txt = this.add.text(650, 250, sceneStat, { fontFamily: "Arial", fontSize: 100, color: "#000000" });
       this.scene.switch("testScene");
-    }, 2000);
+    }, 2000);*/
+  }
+
+  openUI()
+  {
+    this.scene.run("mobileOverWorldUI");
+    var overUI = this.scene.get("mobileOverWorldUI");
+    overUI.createUI(this, this.player);
+  }
+
+  restartScene()
+  {
+    this.scene.restart();
+  }
+
+  enterBattle()
+  {
+
+  }
+
+  enterOVW()
+  {
+    this.scene.sleep("mobileOverWorldUI");
+    this.scene.wake("testScene");
   }
 
   update()

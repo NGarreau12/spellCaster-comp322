@@ -29,7 +29,10 @@ class TestBattle extends Phaser.Scene
     this.enemyAttackCount = 0;
 
     setTimeout(() => {
+      var sceneStat = "false";
+      if (this.scene.isSleeping("testScene")) { sceneStat = "true"; console.log("true"); }
       this.txt = this.add.text(550, 150, this.enemyAttackCount, { fontFamily: "Arial", fontSize: 100, color: "#000000" });
+      this.txt = this.add.text(650, 250, sceneStat, { fontFamily: "Arial", fontSize: 100, color: "#000000" });
       this.scene.switch("testScene");
     }, 2000);
   }
