@@ -61,11 +61,11 @@ class LoadAssets extends Phaser.Scene
     });
     this.anims.create({
         key: "attackWalter",
-        frames: this.anims.generateFrameNumbers("walter", { start: 8, end: 0 }),
+        frames: this.anims.generateFrameNumbers("walter", { start: 8, end: 9 }),
         frameRate: 4,
         repeat: 0
     });
-    //this.anims.get("attackWalter").addFrame(this.anims.generateFrameNumbers("walter", 0));
+    this.anims.get("attackWalter").addFrame(this.anims.generateFrameNumbers("walter", { start: 0, end: 0 }));
     this.anims.create({
         key: "damageWalter",
         frames: this.anims.generateFrameNumbers("walter", { start: 8, end: 8 }),
@@ -104,7 +104,7 @@ class LoadAssets extends Phaser.Scene
 
     var newOrLoad = "";
 
-    if (gameSettings.startNewGame || localStorage.length < 14)
+    if (gameSettings.startNewGame || localStorage.length < 15)
     {
       this.newGame();
       newOrLoad = "NewGame";
@@ -129,6 +129,7 @@ class LoadAssets extends Phaser.Scene
     localStorage.setItem("currentHealth", 100);
     localStorage.setItem("maxMana", 100);
     localStorage.setItem("currentMana", 100);
+    localStorage.setItem("manaRate", 1000);
     localStorage.setItem("currentLevel", 1);
     localStorage.setItem("exp", 0);
     localStorage.setItem("expForLevelUp", 100);
@@ -144,6 +145,7 @@ class LoadAssets extends Phaser.Scene
     currentGame.currentHealth = 100;
     currentGame.maxMana = 100;
     currentGame.currentMana = 100;
+    currentGame.manaRate = 1000;
     currentGame.currentLevel = 1;
     currentGame.exp = 0;
     currentGame.expForLevelUp = 100;
@@ -162,6 +164,7 @@ class LoadAssets extends Phaser.Scene
     currentGame.currentHealth = localStorage.getItem("currentHealth");
     currentGame.maxMana = localStorage.getItem("maxMana");
     currentGame.currentMana = localStorage.getItem("currentMana");
+    currentGame.manaRate = localStorage.getItem("manaRate");
     currentGame.currentLevel = localStorage.getItem("currentLevel");
     currentGame.exp = localStorage.getItem("exp");
     currentGame.expForLevelUp = localStorage.getItem("expForLevelUp");

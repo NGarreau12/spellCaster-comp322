@@ -1,3 +1,5 @@
+var wraithChase = true;
+
 class Town1Scene extends Phaser.Scene
 {
   constructor()
@@ -37,8 +39,15 @@ class Town1Scene extends Phaser.Scene
     }
     else if (!whereToSpawn.localeCompare("LoadGame"))
     {
-      spawnX = gameSettings.playerX;
-      spawnY = gameSettings.playerY;
+      spawnX = currentGame.playerX;
+      spawnY = currentGame.playerY;
+
+      this.scene.stop("battleScene");
+
+      wraithChase = false;
+      setTimeout(() => {
+        wraithChase = true;
+      }, 5000);
     }
     else if (!whereToSpawn.localeCompare("FromForest"))
     {
@@ -87,8 +96,11 @@ class Town1Scene extends Phaser.Scene
 
   update()
   {
-    this.wraith1.followPlayer();
-    this.wraith2.followPlayer();
+    if (wraithChase)
+    {
+      this.wraith1.followPlayer();
+      this.wraith2.followPlayer();
+    }
   }
 
   openUI()
@@ -147,8 +159,10 @@ class Town1Scene extends Phaser.Scene
 
   enterBattle()
   {
-    this.respawnWraith();
+    currentGame.playerX = this.player.x;
+    currentGame.playerY = this.player.y;
+
     this.scene.sleep("mobileOverWorldUI");
-    this.scene.switch("battleScene");
+    this.scene.start("battleScene");
   }
 }

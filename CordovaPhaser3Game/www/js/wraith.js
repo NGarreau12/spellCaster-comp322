@@ -21,6 +21,7 @@ class Wraith extends Phaser.Physics.Arcade.Sprite
     walter = scene.player;
 
     isBattle = scene.isBattle;
+    this.resetBase();
     if (isBattle) { this.setLevel(); }
   }
 
@@ -53,7 +54,19 @@ class Wraith extends Phaser.Physics.Arcade.Sprite
         wSPD -= 0.5;
       }
     }
-    console.log("Level: " + wLVL + " HP: " + wHP + ", Attack: " + wATK + ", Defense: " + wDEF + ", EXP: " + wEXP + ", Speed: " + wSPD);
+    //console.log("Level: " + wLVL + " HP: " + wHP + ", Attack: " + wATK + ", Defense: " + wDEF + ", EXP: " + wEXP + ", Speed: " + wSPD);
+  }
+
+  resetBase()
+  {
+    isBattle = false;
+    isRight = false;
+    wLVL = 1;
+    wHP = 50;
+    wATK = 9;
+    wDEF = 8;
+    wEXP = 12;
+    wSPD = 6.0;
   }
 
   followPlayer()
@@ -87,4 +100,6 @@ class Wraith extends Phaser.Physics.Arcade.Sprite
   getDefense() { return wDEF; }
   getEXP() { return wEXP; }
   getSpeed() { return wSPD; }
+
+  setHealth(newHP) { wHP = newHP; }
 }

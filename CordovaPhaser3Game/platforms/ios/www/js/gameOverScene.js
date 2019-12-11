@@ -17,6 +17,7 @@ class GameOverScene extends Phaser.Scene
 
     this.scene.stop("town1Scene");
     this.scene.stop("forestScene");
+    this.scene.stop("battleScene");
 
     setTimeout(() => {
       this.scene.start("startScene");

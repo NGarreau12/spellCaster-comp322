@@ -29,6 +29,7 @@ function buildConfig(type) {
     currentHealth: 100,
     maxMana: 100,
     currentMana: 100,
+    manaRate: 1000,
     currentLevel: 1,
     exp: 0,
     expForLevelUp: 100,
